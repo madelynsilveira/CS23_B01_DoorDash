@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.angularDrag = 20;
+        rb.angularDrag = 40;
     }
 
     void OnMove(InputValue movementValue)
@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement * speed);
+        rb.AddForce(movement * speed * (Time.fixedDeltaTime + 1));
+
     }
 
     private void OnTriggerEnter(Collider other)
