@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.angularDrag = 20;
     }
 
     void OnMove(InputValue movementValue)
