@@ -51,12 +51,11 @@ public class HouseHit : MonoBehaviour
 
             // If this house needed a delivery update back to default color
             if (isInHouseColors) {
-                Debug.Log("Devliered!");
+                Debug.Log("Delivered!");
                 gameController.RemoveDelivery();
                 gameController.AddMoney(UnityEngine.Random.Range(10, 31));
                 houseRenderer.material.color = housePrefabColor;
             } 
-
         }
     }
 }
