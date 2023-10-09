@@ -9,20 +9,27 @@ public class HouseHit : MonoBehaviour
     // hardcoded to save time rn but should fix later
     private Color housePrefabColor = new Color(0.747f, 0.785f, 0.821f, 1.000f); // you could softcode this
     private Color[] houseColors = new Color[] {
-            new Color(1.0f, 0.0f, 0.0f),     // Red
-            new Color(1.0f, 0.5f, 0.0f),     // Orange
-            new Color(1.0f, 1.0f, 0.0f),     // Yellow
-            new Color(0.0f, 1.0f, 0.0f),     // Green
-            new Color(0.0f, 0.0f, 1.0f),     // Blue
-            new Color(0.3f, 0.0f, 0.5f),     // Indigo
-            new Color(0.5f, 0.0f, 0.5f),      // Violet
-            new Color(1.0f, 0.7f, 0.7f),     // Light Red
-            new Color(1.0f, 0.8f, 0.6f),     // Light Orange
-            new Color(1.0f, 1.0f, 0.7f),     // Light Yellow
-            new Color(0.7f, 1.0f, 0.7f),     // Light Green
-            new Color(0.7f, 0.7f, 1.0f),     // Light Blue
-            new Color(0.7f, 0.5f, 0.7f),     // Light Indigo
-            new Color(0.8f, 0.6f, 0.8f)      // Light Violet
+        new Color(1.0f, 0.0f, 0.0f),     // Red
+        new Color(1.0f, 0.5f, 0.0f),     // Orange
+        new Color(1.0f, 1.0f, 0.0f),     // Yellow
+        new Color(0.0f, 1.0f, 0.0f),     // Green
+        new Color(0.0f, 0.0f, 1.0f),     // Blue
+        new Color(0.3f, 0.0f, 0.5f),     // Indigo
+        new Color(0.5f, 0.0f, 0.5f),     // Violet
+        new Color(0.5f, 0.0f, 0.0f),     // Dark Red
+        new Color(0.7f, 0.35f, 0.0f),    // Dark Orange
+        new Color(0.7f, 0.7f, 0.0f),     // Dark Yellow
+        new Color(0.0f, 0.7f, 0.0f),     // Dark Green
+        new Color(0.0f, 0.0f, 0.5f),     // Dark Blue
+        new Color(0.15f, 0.0f, 0.25f),   // Dark Indigo
+        new Color(0.25f, 0.0f, 0.25f),   // Dark Violet
+        new Color(0.7f, 0.0f, 0.0f),     // Darker Red
+        new Color(0.9f, 0.45f, 0.0f),    // Darker Orange
+        new Color(0.9f, 0.9f, 0.0f),     // Darker Yellow
+        new Color(0.0f, 0.9f, 0.0f),     // Darker Green
+        new Color(0.0f, 0.0f, 0.7f),     // Darker Blue
+        new Color(0.2f, 0.0f, 0.4f),     // Darker Indigo
+        new Color(0.4f, 0.0f, 0.4f)      // Darker Violet
         };
 
     void Start()
@@ -55,6 +62,8 @@ public class HouseHit : MonoBehaviour
                 gameController.RemoveDelivery();
                 gameController.AddMoney(UnityEngine.Random.Range(10, 31));
                 houseRenderer.material.color = housePrefabColor;
+                houseRenderer.material.SetColor("_EmissionColor", housePrefabColor);
+                houseRenderer.material.SetFloat("_EmissionIntensity", 0.0f);
             } 
 
         }

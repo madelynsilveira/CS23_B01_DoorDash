@@ -87,6 +87,8 @@ public class GameController : MonoBehaviour {
                         GameObject randomHouse = houses[undeliveredHouseIndex];
                         Renderer houseRenderer = randomHouse.GetComponent<Renderer>();
                         houseRenderer.material.color = color;
+                        houseRenderer.material.SetColor("_EmissionColor", color);
+                        houseRenderer.material.SetFloat("_EmissionIntensity", 5.0f);
                 }
             }
         }
