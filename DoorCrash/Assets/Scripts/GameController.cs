@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
         public GameObject textGameObject;
         public GameObject moneyGameObject;
         Color housePrefabColor = new Color(0.747f, 0.785f, 0.821f, 1.000f);
 
-        public int deliveries;
         private int money;
+        public int deliveries;
+        private int totalDeliveries = 0;
+        private bool winCondition = false;
+        private int pickupNumber = 10;
 
        void Start () {
             // initialize delivery count
@@ -20,10 +24,32 @@ public class GameController : MonoBehaviour {
         
         }
 
+        public void RestartGame(){
+                money = 0;
+                deliveries = 0;
+                totalDeliveries = 0;
+                winCondition = false;
+                SceneManager.LoadScene("TaskGame");
+        }
+
+        public void QuitGame(){
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                Application.Quit();
+                #endif
+        }
+
        public void AddDelivery (Color color) {
              deliveries++;
+             totalDeliveries++;
              ChangeRandomHouseColor(color);
              UpdateDeliveries ();
+            if (totalDeliveries == pickupNumber) {
+                winCondition = true;
+                Debug.Log("You have cleared this round!");
+            }
+            Debug.Log("Total deliveries = " + totalDeliveries);
         }
 
         public void RemoveDelivery () {
@@ -44,7 +70,6 @@ public class GameController : MonoBehaviour {
             else{
                 deliveryTextB.text = "Deliveries: "+deliveries;
             }
-            
         }
 
         void UpdateMoney () {
