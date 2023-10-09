@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour {
        void UpdateDeliveries () {
             Text deliveryTextB = textGameObject.GetComponent<Text>();
             if(deliveries == 3){
-                deliveryTextB.text = "Deliveries: 3 (Maximum)";
+                deliveryTextB.text = "Deliveries: 3 (Max)";
             }
             else{
                 deliveryTextB.text = "Deliveries: "+deliveries;
@@ -49,7 +49,6 @@ public class GameController : MonoBehaviour {
 
         void UpdateMoney () {
             Text moneyText = moneyGameObject.GetComponent<Text>();
-            Debug.Log("in money");
             moneyText.text = "Money: " + money;
         }
 
@@ -85,7 +84,6 @@ public class GameController : MonoBehaviour {
                 if (houses.Length > 0) {
                         
                         int undeliveredHouseIndex = housesWithoutDeliveries[Random.Range(0, houses.Length)];
-                        Debug.Log("Undelivered House Index is "+undeliveredHouseIndex);
                         GameObject randomHouse = houses[undeliveredHouseIndex];
                         Renderer houseRenderer = randomHouse.GetComponent<Renderer>();
                         houseRenderer.material.color = color;

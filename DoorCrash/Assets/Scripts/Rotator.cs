@@ -37,13 +37,11 @@ public class Rotator : MonoBehaviour {
              if (other.gameObject.tag == "Player") {
                 if (gameController.deliveries < 3){
                   // collision detection
-                  Debug.Log("cube collision");
                   GetComponent<Collider>().enabled = false;
                   
                   // use color of cube to update delivery
                   Renderer cubeRenderer = GetComponent<Renderer>();
                   Color cubeColor = cubeRenderer.material.color;
-                  Debug.Log("Collision with cube of color: " + cubeColor);
                   gameController.AddDelivery (cubeColor);         
                   StartCoroutine(DestroyThis());
                 } 
