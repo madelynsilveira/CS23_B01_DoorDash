@@ -24,20 +24,26 @@ public class GameController : MonoBehaviour {
         
         }
 
+        void Update(){       
+            if (Input.GetKey("escape")){
+                Application.Quit();
+            }
+        }
+
         public void RestartGame(){
-                money = 0;
-                deliveries = 0;
-                totalDeliveries = 0;
-                winCondition = false;
-                SceneManager.LoadScene("TaskGame");
+            money = 0;
+            deliveries = 0;
+            totalDeliveries = 0;
+            winCondition = false;
+            SceneManager.LoadScene("TaskGame");
         }
 
         public void QuitGame(){
-                #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-                #else
-                Application.Quit();
-                #endif
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
         }
 
        public void AddDelivery (Color color) {
