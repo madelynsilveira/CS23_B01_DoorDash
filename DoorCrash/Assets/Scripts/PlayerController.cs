@@ -5,9 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameController gameController;
     private Rigidbody rb;
     private float movementX;
     private float movementY;
+
+    public int deliveryCount;
 
     public float speed = 0;
     // Start is called before the first frame update
@@ -15,6 +18,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.angularDrag = 40;
+        deliveryCount = 0;
+
+        if (GameObject.FindWithTag ("GameController") != null) { gameController = GameObject.FindWithTag ("GameController").GetComponent<GameController>();
+         }
     }
 
     void OnMove(InputValue movementValue)
@@ -33,8 +40,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("PickUp")){
+        if(other.gameObject.CompareTag("PickUp") && gameController.deliveries < 3){
             other.gameObject.SetActive(false);
+            deliveryCount++;
         }
     }
 }
