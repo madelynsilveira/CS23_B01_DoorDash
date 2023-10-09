@@ -33,8 +33,9 @@ public class HouseHit : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if (!isHit && other.gameObject.CompareTag("Player")) {
-            // Set the flag to true to prevent further collisions
-            isHit = true; 
+            Debug.Log("Hit");
+            // Set the flag to true to prevent further collisions - omitting this because of unintended bug
+            // isHit = true; 
 
             // get house color 
             Renderer houseRenderer = GetComponent<Renderer>();
@@ -51,7 +52,6 @@ public class HouseHit : MonoBehaviour
 
             // If this house needed a delivery update back to default color
             if (isInHouseColors) {
-                Debug.Log("Devliered!");
                 gameController.RemoveDelivery();
                 gameController.AddMoney(UnityEngine.Random.Range(10, 31));
                 houseRenderer.material.color = housePrefabColor;
