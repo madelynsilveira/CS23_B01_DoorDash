@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571579, b: 0.30692378, a: 1}
+  m_IndirectSpecularColor: {r: 0.18035398, g: 0.22578934, b: 0.30702615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -296,6 +296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -881,6 +886,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1147,6 +1157,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1288,6 +1303,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1662,6 +1682,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2016,6 +2041,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2145,6 +2175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2294,6 +2329,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2435,6 +2475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2656,6 +2701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2979,6 +3029,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3121,6 +3176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3207,6 +3267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3541,6 +3606,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3621,6 +3691,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3706,6 +3781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3998,6 +4078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4660,6 +4745,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4685,7 +4775,6 @@ GameObject:
   - component: {fileID: 1555603494}
   - component: {fileID: 1555603493}
   - component: {fileID: 1555603492}
-  - component: {fileID: 1555603491}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -4693,20 +4782,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1555603491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555603490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b49b7bf5de984e11ab088cab0899f84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialSpeed: 5
-  arcHeight: 2
 --- !u!135 &1555603492
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4918,6 +4993,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5059,6 +5139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5420,6 +5505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5562,6 +5652,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5703,6 +5798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5991,6 +6091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6361,6 +6466,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6537,6 +6647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6757,6 +6872,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: house1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6837,6 +6957,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house1 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f293db5fa5469045b70706e76b25277,
+        type: 3}
+      propertyPath: m_TagString
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
