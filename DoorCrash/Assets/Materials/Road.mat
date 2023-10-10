@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream
 --- !u!114 &-1893340345111590352
+=======
+--- !u!114 &-369542524273057415
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,12 +116,20 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+<<<<<<< Updated upstream
     - _Metallic: 0.454
+=======
+    - _Metallic: 0.554
+>>>>>>> Stashed changes
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+<<<<<<< Updated upstream
     - _Smoothness: 0.578
+=======
+    - _Smoothness: 1
+>>>>>>> Stashed changes
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -126,8 +138,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+<<<<<<< Updated upstream
     - _BaseColor: {r: 0.03773582, g: 0.034674235, b: 0.034674235, a: 1}
     - _Color: {r: 0.03773582, g: 0.034674235, b: 0.034674235, a: 1}
+=======
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+>>>>>>> Stashed changes
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
