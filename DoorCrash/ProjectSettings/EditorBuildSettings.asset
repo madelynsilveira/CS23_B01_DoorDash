@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TaskGame.unity
     guid: 42b2e33e7896f4cad91d106105908c5d
   - enabled: 1
-    path: Assets/Scenes/YouLose.unity
-    guid: d3fe2baeea2c345229503d866bef2e99
-  - enabled: 1
     path: Assets/Scenes/StartScreen.unity
     guid: db856b8e9141f4c6a8c6fa90daa04b75
+  - enabled: 1
+    path: Assets/Scenes/YouLose.unity
+    guid: d3fe2baeea2c345229503d866bef2e99
   - enabled: 1
     path: Assets/Scenes/LevelOne.unity
     guid: 3c34d06fb0379f14bb8722b662f31958
