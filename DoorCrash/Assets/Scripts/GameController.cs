@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
         public GameObject textGameObject;
         public GameObject moneyGameObject;
+
+        public DateTime startTime;
+        public DateTime endTime;
+        public int roundTime;
         
         //TODO do this another way
         Color housePrefabColor = HexToColor("#686868");
@@ -18,12 +23,19 @@ public class GameController : MonoBehaviour {
         private int pickupNumber = 10;
 
        void Start () {
-            // initialize delivery count
-            deliveries = 0;
-            money = 0;
-            UpdateDeliveries();
-            UpdateMoney();
-        
+            
+            if (SceneManager.GetActiveScene().name == "LevelOne"){
+                // initialize delivery count
+                startTime = DateTime.Now;
+                deliveries = 0;
+                money = 0;
+                UpdateDeliveries();
+                UpdateMoney();
+
+                textGameObject = GameObject.FindGameObjectsWithTag("ScoreText")[0];
+                moneyGameObject = GameObject.FindGameObjectsWithTag("MoneyText")[0];
+            }
+            
         }
 
         void Update(){       
@@ -36,11 +48,12 @@ public class GameController : MonoBehaviour {
             SceneManager.LoadScene("YouLose");
         }
 
+        public void EndSceneYouWin(){
+            SceneManager.LoadScene("YouWin");
+        }
+
         public void RestartGame(){
-            money = 0;
-            deliveries = 0;
-            totalDeliveries = 0;
-            winCondition = false;
+            SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadScene("LevelOne");
         }
 
@@ -52,17 +65,57 @@ public class GameController : MonoBehaviour {
             #endif
         }
 
+        public void winCheck(){
+            if (totalDeliveries == pickupNumber && deliveries == 0) {
+                winCondition = true;
+                Debug.Log("You have cleared this round!");
+                endTime = DateTime.Now;
+                TimeSpan difference = endTime - startTime;
+                roundTime = (int)difference.TotalSeconds;
+                Debug.Log("Seconds elapsed: "+roundTime);
+                EndSceneYouWin();
+            }
+        }
+
        public void AddDelivery (Color color) {
              deliveries++;
              totalDeliveries++;
              ChangeRandomHouseColor(color);
              UpdateDeliveries ();
-            if (totalDeliveries == pickupNumber) {
-                winCondition = true;
-                Debug.Log("You have cleared this round!");
-            }
+            
             Debug.Log("Total deliveries = " + totalDeliveries);
         }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Your code to execute after a new scene is loaded
+        Debug.Log("Scene Loaded: " + scene.name);
+
+        if (scene.name == "LevelOne")
+        {
+            startTime = DateTime.Now;
+            money = 0;
+            deliveries = 0;
+            totalDeliveries = 0;
+            winCondition = false;
+            
+
+            try{
+                textGameObject = GameObject.FindGameObjectsWithTag("ScoreText")[0];
+                moneyGameObject = GameObject.FindGameObjectsWithTag("MoneyText")[0];
+            }
+            catch(Exception ex) {
+                Debug.Log("Exception: "+ex.Message);
+                textGameObject = null;
+                moneyGameObject = null;
+            }
+        }
+        if (scene.name == "YouWin" || scene.name == "YouLose")
+        {
+            Button button = GameObject.FindGameObjectsWithTag("PlayAgainButton")[0].GetComponent<Button>();
+            button.onClick.AddListener(RestartGame);
+        }
+    }
 
         public void RemoveDelivery () {
              deliveries--;
@@ -119,7 +172,7 @@ public class GameController : MonoBehaviour {
 
                 // assign undelivered house the current delivery color
                 if (housesWithoutDeliveries.Count > 0) {
-                        int undeliveredHouseIndex = housesWithoutDeliveries[Random.Range(0, housesWithoutDeliveries.Count)];
+                        int undeliveredHouseIndex = housesWithoutDeliveries[UnityEngine.Random.Range(0, housesWithoutDeliveries.Count)];
                         GameObject randomHouse = houses[undeliveredHouseIndex];
                         Debug.Log("Got a house, index is "+undeliveredHouseIndex);
                         Renderer houseRenderer = randomHouse.GetComponent<MeshRenderer>();
