@@ -7,7 +7,7 @@ public class HouseHit : MonoBehaviour
     private GameController gameController;
     private bool isHit = false; // Flag to track if the house has been hit
     // hardcoded to save time rn but should fix later
-    private Color housePrefabColor = new Color(0.747f, 0.785f, 0.821f, 1.000f); // you could softcode this
+    private Color houseRoofColor; // you could softcode this
     private Color[] houseColors = new Color[] {
         new Color(1.0f, 0.0f, 0.0f),     // Red
         new Color(1.0f, 0.5f, 0.0f),     // Orange
@@ -35,18 +35,19 @@ public class HouseHit : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        houseRoofColor = GameController.HexToColor("#686868");
     }
 
     void OnCollisionEnter(Collision other)
     {
         if (!isHit && other.gameObject.CompareTag("Player")) {
-            Debug.Log("Hit");
+            // Debug.Log("Hit");
             // Set the flag to true to prevent further collisions - omitting this because of unintended bug
             // isHit = true; 
 
             // get house color 
-            Renderer houseRenderer = GetComponent<Renderer>();
-            Color houseColor = houseRenderer.material.color;
+            MeshRenderer houseRenderer = GetComponent<MeshRenderer>();
+            Color houseColor = houseRenderer.materials[2].color;
 
             // Better way to do this later
             bool isInHouseColors = false;
@@ -61,9 +62,9 @@ public class HouseHit : MonoBehaviour
             if (isInHouseColors) {
                 gameController.RemoveDelivery();
                 gameController.AddMoney(UnityEngine.Random.Range(10, 31));
-                houseRenderer.material.color = housePrefabColor;
-                houseRenderer.material.SetColor("_EmissionColor", housePrefabColor);
-                houseRenderer.material.SetFloat("_EmissionIntensity", 0.0f);
+                houseRenderer.materials[2].color = houseRoofColor;
+                houseRenderer.materials[2].SetColor("_EmissionColor", houseRoofColor);
+                houseRenderer.materials[2].SetFloat("_EmissionIntensity", 0.0f);
             } 
 
         }
