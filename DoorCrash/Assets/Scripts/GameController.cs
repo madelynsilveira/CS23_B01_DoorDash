@@ -32,12 +32,16 @@ public class GameController : MonoBehaviour {
             }
         }
 
+        public void EndSceneYouLose(){
+            SceneManager.LoadScene("YouLose");
+        }
+
         public void RestartGame(){
             money = 0;
             deliveries = 0;
             totalDeliveries = 0;
             winCondition = false;
-            SceneManager.LoadScene("TaskGame");
+            SceneManager.LoadScene("LevelOne");
         }
 
         public void QuitGame(){
