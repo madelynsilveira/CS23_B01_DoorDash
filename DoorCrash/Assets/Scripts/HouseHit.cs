@@ -41,7 +41,7 @@ public class HouseHit : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if (!isHit && other.gameObject.CompareTag("Player")) {
-            Debug.Log("Hit");
+            // Debug.Log("Hit");
             // Set the flag to true to prevent further collisions - omitting this because of unintended bug
             // isHit = true; 
 
