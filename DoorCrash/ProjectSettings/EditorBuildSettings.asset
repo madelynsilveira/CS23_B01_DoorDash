@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YouLose.unity
     guid: d3fe2baeea2c345229503d866bef2e99
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: db856b8e9141f4c6a8c6fa90daa04b75
   m_configObjects: {}
