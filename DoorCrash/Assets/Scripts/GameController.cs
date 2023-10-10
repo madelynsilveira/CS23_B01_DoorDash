@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
         public GameObject textGameObject;
         public GameObject moneyGameObject;
-        Color housePrefabColor = new Color(0.747f, 0.785f, 0.821f, 1.000f);
+        
+        //TODO do this another way
+        Color housePrefabColor = HexToColor("#686868");
 
         private int money;
         public int deliveries;
@@ -97,30 +99,50 @@ public class GameController : MonoBehaviour {
             // get list of house prefabs
             GameObject[] houses = GameObject.FindGameObjectsWithTag("House"); 
             if (houses.Length > 0) {
+
+                Debug.Log("found more than one house!");
             
                 // find houses with starting hosue prefab color
                 List<int> housesWithoutDeliveries = new List<int>();
                 
                 // TODO: this might not be working to not rewrite houses that are already colored
                 for (int i = 0; i < houses.Length; i++) {
-                    Renderer houseRenderer = houses[i].GetComponent<Renderer>();
-                    Debug.Log("Renderer material color is "+ houseRenderer.material.color);
-                    if (AreColorsCloseEnough(houseRenderer.material.color,housePrefabColor)) {
-                        Debug.Log("Found a house without a delivery, index is "+i);
+                    MeshRenderer houseRenderer = houses[i].GetComponent<MeshRenderer>();
+                    if (AreColorsCloseEnough(houseRenderer.materials[2].color,housePrefabColor)) {
                         housesWithoutDeliveries.Add(i);
                     }
                 }
 
                 // assign undelivered house the current delivery color
-                if (houses.Length > 0) {
-                        
-                        int undeliveredHouseIndex = housesWithoutDeliveries[Random.Range(0, houses.Length)];
+                if (housesWithoutDeliveries.Count > 0) {
+                        int undeliveredHouseIndex = housesWithoutDeliveries[Random.Range(0, housesWithoutDeliveries.Count)];
                         GameObject randomHouse = houses[undeliveredHouseIndex];
-                        Renderer houseRenderer = randomHouse.GetComponent<Renderer>();
-                        houseRenderer.material.color = color;
-                        houseRenderer.material.SetColor("_EmissionColor", color);
-                        houseRenderer.material.SetFloat("_EmissionIntensity", 5.0f);
+                        Debug.Log("Got a house, index is "+undeliveredHouseIndex);
+                        Renderer houseRenderer = randomHouse.GetComponent<MeshRenderer>();
+                        houseRenderer.materials[2].color = color;
+                        houseRenderer.materials[2].SetColor("_EmissionColor", color);
+                        houseRenderer.materials[2].SetFloat("_EmissionIntensity", 5.0f);
                 }
             }
         }
+
+        public static Color HexToColor(string hex)
+        {
+            // Ensure the hash symbol is removed
+            hex = hex.Replace("#", "");
+
+            byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+            byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+            byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+            byte a = 255;  // Default value for alpha
+
+            // Check if the hex string includes an alpha value
+            if (hex.Length == 8)
+            {
+                a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+            }
+
+            return new Color(r / 255f, g / 255f, b / 255f, a / 255f);
+        }
+
 }
