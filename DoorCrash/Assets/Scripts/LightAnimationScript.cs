@@ -16,7 +16,6 @@ public class LightAnimationScript : MonoBehaviour
             float normalizedTime = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime;
             if (normalizedTime >= 1f && !animationComplete)
             {
-                Debug.Log("Animation Complete");
                 animationComplete = true;
                 SceneManager.LoadScene("YouLose");
             }

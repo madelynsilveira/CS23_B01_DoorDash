@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PickUp
   - House
+  - ScoreText
+  - MoneyText
+  - PlayAgainButton
   layers:
   - Default
   - TransparentFX

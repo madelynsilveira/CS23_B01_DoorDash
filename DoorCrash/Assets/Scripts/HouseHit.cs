@@ -65,6 +65,7 @@ public class HouseHit : MonoBehaviour
                 houseRenderer.materials[2].color = houseRoofColor;
                 houseRenderer.materials[2].SetColor("_EmissionColor", houseRoofColor);
                 houseRenderer.materials[2].SetFloat("_EmissionIntensity", 0.0f);
+                gameController.winCheck();
             } 
 
         }
