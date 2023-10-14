@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private float movementX;
     private float movementY;
+    public float bounceForce = 100f;
 
     public int deliveryCount;
 
@@ -43,6 +44,16 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("PickUp") && gameController.deliveries < 3){
             other.gameObject.SetActive(false);
             deliveryCount++;
+        }
+
+        if(other.gameObject.CompareTag("Trampoline")) {
+            Debug.Log("Hit a trampoline.");
+
+            // Calculate the bounce direction (assuming upward).
+            Vector3 bounceDirection = Vector3.up;
+
+            // Apply the bounce force to the object's Rigidbody.
+            rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
         }
     }
 }
