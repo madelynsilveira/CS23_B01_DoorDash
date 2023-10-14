@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private float movementX;
     private float movementY;
-    public float bounceForce = 100f;
+    public float bounceForce = 50f;
 
     public int deliveryCount;
 
