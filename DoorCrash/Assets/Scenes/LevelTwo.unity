@@ -789,6 +789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 974650911}
   distance: 10
+  rotationSpeed: 5
+  maxCameraSpeed: 10
 --- !u!1 &357567579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,6 +1361,7 @@ GameObject:
   - component: {fileID: 544054309}
   - component: {fileID: 544054308}
   - component: {fileID: 544054307}
+  - component: {fileID: 544054310}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -1439,6 +1442,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &544054310
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544054306}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: 4adced7472284b34b989f71db93fc05f, type: 3}
 --- !u!1001 &563096868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2990,9 +3015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989d95ae8fed41e881a6d5535dc5a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceForce: 100
-  deliveryCount: 0
-  speed: 10
+  moveSpeed: 10
+  rotationSpeed: 90
+  angularDrag: 2
 --- !u!114 &974650918
 MonoBehaviour:
   m_ObjectHideFlags: 0
