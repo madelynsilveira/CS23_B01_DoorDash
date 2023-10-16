@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameController gameController;
     public float moveSpeed = 10f;
-    public float rotationSpeed = 90f; // Degrees per second
-    public float angularDrag = 2f; // Adjust this value
+    public float rotationSpeed = 90f; 
+    public float angularDrag = 2f; 
+    public float bounceForce = 50f;
+    public int deliveryCount;
 
     private Rigidbody rb;
 
@@ -33,6 +37,23 @@ public class PlayerController : MonoBehaviour
         // Move the character forward or backward
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if(other.gameObject.CompareTag("PickUp") && gameController.deliveries < 3){
+    //         other.gameObject.SetActive(false);
+    //         deliveryCount++;
+    //     }
+
+    //     if(other.gameObject.CompareTag("Trampoline")) {
+    //         Debug.Log("Hit a trampoline.");
+
+    //         // Calculate the bounce direction (assuming upward).
+    //         Vector3 bounceDirection = Vector3.up;
+
+    //         // Apply the bounce force to the object's Rigidbody.
+    //         rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
+    //     }
+    // }
 }
 
 
