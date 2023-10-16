@@ -210,19 +210,19 @@ public class GameController : MonoBehaviour {
         GameObject car= GameObject.FindGameObjectsWithTag("Player")[0];
         Renderer carRenderer = car.GetComponent<MeshRenderer>();
         Material carBaseMaterial = carRenderer.materials[0];
+
         Color originalColor = carBaseMaterial.color;
+        Debug.Log(carRenderer.materials[0]);
 
         // change car base
         carBaseMaterial.color = color; 
-        carBaseMaterial.SetColor("_EmissionColor", color);
-        carBaseMaterial.SetFloat("_EmissionIntensity", 5.0f);
         StartCoroutine(RevertCarColor(carBaseMaterial, originalColor, 0.5f));
     }
 
-    private IEnumerator RevertCarColor(Material carMaterial, Color originalColor, float duration)
+    private IEnumerator RevertCarColor(Material carBaseMaterial, Color originalColor, float duration)
     {
         yield return new WaitForSeconds(duration);
-        carMaterial.color = originalColor;
+        carBaseMaterial.color = originalColor;
     }
 
 

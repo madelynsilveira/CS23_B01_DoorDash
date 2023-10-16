@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 60639d53bfc364c5699e1b31c0b32d4b,
         type: 3}
       propertyPath: m_Name
-      value: car3 Variant
+      value: BestCarPrefabYet
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 60639d53bfc364c5699e1b31c0b32d4b,
         type: 3}
@@ -155,7 +155,7 @@ MeshRenderer:
   - {fileID: -592289198926534517, guid: 60639d53bfc364c5699e1b31c0b32d4b, type: 3}
   - {fileID: -3221002790672276818, guid: 60639d53bfc364c5699e1b31c0b32d4b, type: 3}
   - {fileID: -6478536213147159724, guid: 60639d53bfc364c5699e1b31c0b32d4b, type: 3}
-  - {fileID: 5186321381796566732, guid: 60639d53bfc364c5699e1b31c0b32d4b, type: 3}
+  - {fileID: -673335961941353722, guid: 60639d53bfc364c5699e1b31c0b32d4b, type: 3}
   - {fileID: -1448050984195004923, guid: 60639d53bfc364c5699e1b31c0b32d4b, type: 3}
   - {fileID: -673335961941353722, guid: 60639d53bfc364c5699e1b31c0b32d4b, type: 3}
   m_StaticBatchInfo:
@@ -272,3 +272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotationSpeed: 90
+  angularDrag: 2
+  bounceForce: 50
+  deliveryCount: 0
