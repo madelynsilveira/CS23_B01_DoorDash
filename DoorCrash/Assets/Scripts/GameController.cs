@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
         public int deliveries;
         private int totalDeliveries = 0;
         private bool winCondition = false;
-        private int pickupNumber = 10;
+        public int pickupNumber = 10;
 
        void Start () {
             
@@ -68,7 +68,8 @@ public class GameController : MonoBehaviour {
         public void winCheck(){
             if (totalDeliveries == pickupNumber && deliveries == 0) {
                 winCondition = true;
-                Debug.Log("You have cleared this round!");
+
+                Debug.Log("You have cleared this round!" + winCondition);
                 endTime = DateTime.Now;
                 TimeSpan difference = endTime - startTime;
                 roundTime = (int)difference.TotalSeconds;
@@ -77,10 +78,12 @@ public class GameController : MonoBehaviour {
             }
         }
 
+        // hitting a pikcup box
        public void AddDelivery (Color color) {
              deliveries++;
              totalDeliveries++;
              ChangeRandomHouseColor(color);
+             ChangeCarColor(color);
              UpdateDeliveries ();
             
             Debug.Log("Total deliveries = " + totalDeliveries);
@@ -201,5 +204,26 @@ public class GameController : MonoBehaviour {
 
             return new Color(r / 255f, g / 255f, b / 255f, a / 255f);
         }
+
+    private void ChangeCarColor(Color color) {
+        // grab necessary variables
+        GameObject car= GameObject.FindGameObjectsWithTag("Player")[0];
+        Renderer carRenderer = car.GetComponent<MeshRenderer>();
+        Material carBaseMaterial = carRenderer.materials[0];
+        Color originalColor = carBaseMaterial.color;
+
+        // change car base
+        carBaseMaterial.color = color; 
+        carBaseMaterial.SetColor("_EmissionColor", color);
+        carBaseMaterial.SetFloat("_EmissionIntensity", 5.0f);
+        StartCoroutine(RevertCarColor(carBaseMaterial, originalColor, 0.5f));
+    }
+
+    private IEnumerator RevertCarColor(Material carMaterial, Color originalColor, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        carMaterial.color = originalColor;
+    }
+
 
 }
