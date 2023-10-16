@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 10f;
     public float rotationSpeed = 90f; // Degrees per second
+    public float angularDrag = 2f; // Adjust this value
 
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.angularDrag = angularDrag; // Set the angular drag value
+    }
     void Update()
     {
         // Get input from arrow keys
