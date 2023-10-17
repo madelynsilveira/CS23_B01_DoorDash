@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody>();
         rb.angularDrag = angularDrag; // Set the angular drag value
     }
@@ -42,10 +43,16 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < -15f)
         {
             // Respawn the car at (0, 0, 0)
+
+
             transform.position = new Vector3(0f, 0f, 0f);
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.rotation = Quaternion.identity;
+
+            if(gameController.currScene == "LevelTwo") {
+                transform.position = new Vector3(0f, 10f, -5f);
+            }
         }
     }
 
