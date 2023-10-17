@@ -12,8 +12,6 @@ public class GameController : MonoBehaviour {
         public DateTime startTime;
         public DateTime endTime;
         public int roundTime;
-        
-        //TODO do this another way
         Color housePrefabColor = HexToColor("#686868");
 
         private int money;
@@ -22,11 +20,15 @@ public class GameController : MonoBehaviour {
         private bool winCondition = false;
         public int pickupNumber = 10;
 
-        public string lastScene;
+        public string nextScene;
+        public string currScene;
 
        void Start () {
+            Debug.Log("Running start.");
             
-            if (SceneManager.GetActiveScene().name == "LevelOne"){
+            if (SceneManager.GetActiveScene().name == "LevelOne" || 
+                SceneManager.GetActiveScene().name == "LevelZero"||
+                SceneManager.GetActiveScene().name == "LevelTwo"){
                 // initialize delivery count
                 startTime = DateTime.Now;
                 deliveries = 0;
@@ -36,8 +38,22 @@ public class GameController : MonoBehaviour {
 
                 textGameObject = GameObject.FindGameObjectsWithTag("ScoreText")[0];
                 moneyGameObject = GameObject.FindGameObjectsWithTag("MoneyText")[0];
+
+                SceneManager.sceneLoaded += OnSceneLoaded;
             }
-            
+            if(SceneManager.GetActiveScene().name == "LevelZero"){
+                nextScene = "LevelOne";
+                currScene = "LevelZero";
+            }
+            if(SceneManager.GetActiveScene().name == "LevelOne"){
+                nextScene = "LevelTwo";
+                currScene = "LevelOne";
+            }
+            if(SceneManager.GetActiveScene().name == "LevelTwo"){
+                nextScene = "GameEnd";
+                currScene = "Level Two";
+            }
+            Debug.Log("Next scene is "+nextScene);
         }
 
         void Update(){       
@@ -52,11 +68,6 @@ public class GameController : MonoBehaviour {
 
         public void EndSceneYouWin(){
             SceneManager.LoadScene("YouWin");
-        }
-
-        public void RestartGame(){
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.LoadScene("LevelOne");
         }
 
         public void QuitGame(){
@@ -93,34 +104,89 @@ public class GameController : MonoBehaviour {
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if(SceneManager.GetActiveScene().name == "LevelZero"){
+                nextScene = "LevelOne";
+                currScene = "LevelZero";
+            }
+            if(SceneManager.GetActiveScene().name == "LevelOne"){
+                nextScene = "LevelTwo";
+                currScene = "LevelOne";
+            }
+            if(SceneManager.GetActiveScene().name == "LevelTwo"){
+                nextScene = "GameEnd";
+                currScene = "Level Two";
+            }
         // Your code to execute after a new scene is loaded
         Debug.Log("Scene Loaded: " + scene.name);
 
-        if (scene.name == "LevelOne")
-        {
-            startTime = DateTime.Now;
-            money = 0;
-            deliveries = 0;
-            totalDeliveries = 0;
-            winCondition = false;
-            
+        if (SceneManager.GetActiveScene().name == "LevelOne" || 
+                SceneManager.GetActiveScene().name == "LevelZero"||
+                SceneManager.GetActiveScene().name == "LevelTwo"){
+                // initialize delivery count
+                totalDeliveries = 0;
+                startTime = DateTime.Now;
+                deliveries = 0;
+                money = 0;
 
-            try{
                 textGameObject = GameObject.FindGameObjectsWithTag("ScoreText")[0];
                 moneyGameObject = GameObject.FindGameObjectsWithTag("MoneyText")[0];
+
+                UpdateDeliveries();
+                UpdateMoney();
+
+                
             }
-            catch(Exception ex) {
-                Debug.Log("Exception: "+ex.Message);
-                textGameObject = null;
-                moneyGameObject = null;
+            if(SceneManager.GetActiveScene().name == "LevelZero"){
+                nextScene = "LevelOne";
             }
+            if(SceneManager.GetActiveScene().name == "LevelOne"){
+                nextScene = "LevelTwo";
+            }
+            if(SceneManager.GetActiveScene().name == "LevelTwo"){
+                nextScene = "LevelTwo";
+            }
+            Debug.Log("Next scene is "+nextScene);    
+            if (scene.name == "YouWin")
+            {
+                Button nextButton = GameObject.FindGameObjectsWithTag("NextButton")[0].GetComponent<Button>();
+                if(nextScene == "LevelOne" || nextScene == "LevelTwo") {
+                    // Access the Text component of the Button and set its text
+                    Text buttonText = nextButton.GetComponentInChildren<Text>();
+                    if (buttonText != null)
+                    {
+                        buttonText.text = "Next Level";
+                        nextButton.onClick.AddListener(loadNextLevel);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No Text component found in the children of the NextButton.");
+                    }
+                }
+            }
+            if (scene.name == "YouLose")
+            {
+                Button nextButton = GameObject.FindGameObjectsWithTag("NextButton")[0].GetComponent<Button>();
+                    // Access the Text component of the Button and set its text
+                    Text buttonText = nextButton.GetComponentInChildren<Text>();
+                    if (buttonText != null)
+                    {
+                        buttonText.text = "Try Again";
+                        nextButton.onClick.AddListener(loadCurrLevel);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No Text component found in the children of the NextButton.");
+                    }
+                }
         }
-        if (scene.name == "YouWin" || scene.name == "YouLose")
-        {
-            Button button = GameObject.FindGameObjectsWithTag("PlayAgainButton")[0].GetComponent<Button>();
-            button.onClick.AddListener(RestartGame);
+        
+        public void loadNextLevel () {
+            SceneManager.LoadScene(nextScene);
         }
-    }
+        
+        public void loadCurrLevel() {
+            SceneManager.LoadScene(currScene);
+        }
 
         public void RemoveDelivery () {
              deliveries--;
@@ -226,6 +292,4 @@ public class GameController : MonoBehaviour {
         yield return new WaitForSeconds(duration);
         carBaseMaterial.color = originalColor;
     }
-
-
 }

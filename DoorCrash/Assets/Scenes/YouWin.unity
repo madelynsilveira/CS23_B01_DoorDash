@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18035275, g: 0.2257897, b: 0.30702734, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 536465161}
   - component: {fileID: 536465160}
   m_Layer: 5
-  m_Name: PlayAgainText
+  m_Name: NextButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,8 +966,8 @@ GameObject:
   - component: {fileID: 719908062}
   - component: {fileID: 719908061}
   m_Layer: 5
-  m_Name: LoadPlayAgain
-  m_TagString: PlayAgainButton
+  m_Name: NextButton
+  m_TagString: NextButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 1161102080}
   - component: {fileID: 1161102079}
   m_Layer: 5
-  m_Name: PlayAgainBG
+  m_Name: NextButtonBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
