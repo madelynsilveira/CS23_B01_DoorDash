@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float bounceForce = 50f;
     public int deliveryCount;
 
+    public float rotateBackSpeed = 5f;
     private Rigidbody rb;
 
     void Start()
@@ -37,23 +38,39 @@ public class PlayerController : MonoBehaviour
         // Move the character forward or backward
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if(other.gameObject.CompareTag("PickUp") && gameController.deliveries < 3){
-    //         other.gameObject.SetActive(false);
-    //         deliveryCount++;
-    //     }
 
-    //     if(other.gameObject.CompareTag("Trampoline")) {
-    //         Debug.Log("Hit a trampoline.");
+    void FixedUpdate()
+    {
+        // Check if the z-axis rotation is beyond a threshold (e.g., 45 degrees)
+        if (Mathf.Abs(rb.rotation.eulerAngles.z) > 45f)
+        {
+            // Calculate the target rotation (zero out the z rotation)
+            Quaternion targetRotation = Quaternion.Euler(rb.rotation.eulerAngles.x, rb.rotation.eulerAngles.y, 0f);
 
-    //         // Calculate the bounce direction (assuming upward).
-    //         Vector3 bounceDirection = Vector3.up;
+            // Smoothly interpolate the rotation
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotateBackSpeed * Time.fixedDeltaTime);
+        }
+    }
 
-    //         // Apply the bounce force to the object's Rigidbody.
-    //         rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
-    //     }
-    // }
+    
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        // if(other.gameObject.CompareTag("PickUp") && gameController.deliveries < 3){
+        //     other.gameObject.SetActive(false);
+        //     deliveryCount++;
+        // }
+
+        if(other.gameObject.CompareTag("Trampoline")) {
+            Debug.Log("Hit a trampoline.");
+
+            // Calculate the bounce direction (assuming upward).
+            Vector3 bounceDirection = Vector3.up;
+
+            // Apply the bounce force to the object's Rigidbody.
+            rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
+        }
+    }
 }
 
 
