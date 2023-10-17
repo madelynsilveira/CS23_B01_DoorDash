@@ -289,12 +289,13 @@ public class GameController : MonoBehaviour {
 
     private void ChangeCarColor(Color color) {
         // grab necessary variables
+
         GameObject car= GameObject.FindGameObjectsWithTag("Player")[0];
         Renderer carRenderer = car.GetComponent<MeshRenderer>();
         Material carBaseMaterial = carRenderer.materials[0];
 
         Color originalColor = carBaseMaterial.color;
-        Debug.Log(carRenderer.materials[0]);
+        Debug.Log("changing car materials");
 
         // change car base
         carBaseMaterial.color = color; 
