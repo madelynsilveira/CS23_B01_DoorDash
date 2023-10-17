@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour {
             }
             if(SceneManager.GetActiveScene().name == "LevelTwo"){
                 nextScene = "GameEnd";
-                currScene = "Level Two";
+                currScene = "LevelTwo";
             }
             Debug.Log("Next scene is "+nextScene);
         }
@@ -115,6 +115,7 @@ public class GameController : MonoBehaviour {
             if(SceneManager.GetActiveScene().name == "LevelTwo"){
                 nextScene = "GameEnd";
                 currScene = "Level Two";
+                pickupNumber = 4;
             }
         // Your code to execute after a new scene is loaded
         Debug.Log("Scene Loaded: " + scene.name);
@@ -155,6 +156,19 @@ public class GameController : MonoBehaviour {
                     if (buttonText != null)
                     {
                         buttonText.text = "Next Level";
+                        nextButton.onClick.AddListener(loadNextLevel);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No Text component found in the children of the NextButton.");
+                    }
+                }
+                if(nextScene == "GameEnd"){
+                    // Access the Text component of the Button and set its text
+                    Text buttonText = nextButton.GetComponentInChildren<Text>();
+                    if (buttonText != null)
+                    {
+                        buttonText.text = "That's it!";
                         nextButton.onClick.AddListener(loadNextLevel);
                     }
                     else
