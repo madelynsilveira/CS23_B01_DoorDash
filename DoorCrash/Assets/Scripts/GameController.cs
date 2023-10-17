@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("PauseMenu").transform.Find("Canvas").GetComponent<Canvas>().enabled = false;
 
                 // set up the pause menu buttons
+                GameObject.FindGameObjectWithTag("QuitButton").GetComponent<Button>().onClick.AddListener(QuitGame);
                 GameObject.FindGameObjectWithTag("ResumeButton").GetComponent<Button>().onClick.AddListener(UnloadPauseMenu);
                 GameObject.FindGameObjectWithTag("RestartButton").GetComponent<Button>().onClick.AddListener(loadCurrLevel);
             }
@@ -123,11 +124,7 @@ public class GameController : MonoBehaviour {
         }
 
         public void QuitGame(){
-            #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-            #else
             Application.Quit();
-            #endif
         }
 
         private IEnumerator ResetPauseBuffered()
@@ -194,6 +191,7 @@ public class GameController : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("PauseMenu").transform.Find("Canvas").GetComponent<Canvas>().enabled = false;
 
                 // set up the pause menu buttons
+                GameObject.FindGameObjectWithTag("QuitButton").GetComponent<Button>().onClick.AddListener(QuitGame);
                 GameObject.FindGameObjectWithTag("ResumeButton").GetComponent<Button>().onClick.AddListener(UnloadPauseMenu);
                 GameObject.FindGameObjectWithTag("RestartButton").GetComponent<Button>().onClick.AddListener(loadCurrLevel);
                 
