@@ -122,7 +122,7 @@ public class GameController : MonoBehaviour {
             }
             if(SceneManager.GetActiveScene().name == "LevelTwo"){
                 nextScene = "GameEnd";
-                currScene = "Level Two";
+                currScene = "LevelTwo";
                 pickupNumber = 4;
             }
         // Your code to execute after a new scene is loaded
