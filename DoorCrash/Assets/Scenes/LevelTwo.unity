@@ -4911,6 +4911,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2620262822221979706, guid: 39276a901a72f4fc8ab61351ea2c7e5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: PauseTime
+      objectReference: {fileID: 0}
     - target: {fileID: 5509517009696945201, guid: 39276a901a72f4fc8ab61351ea2c7e5c,
         type: 3}
       propertyPath: m_TagString

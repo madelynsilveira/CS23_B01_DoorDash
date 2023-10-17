@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour {
         public GameObject textGameObject;
         public GameObject moneyGameObject;
+        public GameObject pauseTimeGameObject;
 
         public DateTime startTime;
         public DateTime endTime;
@@ -98,11 +100,17 @@ public class GameController : MonoBehaviour {
         }
 
         public void LoadPauseMenu() {
+            endTime = DateTime.Now;
+            TimeSpan difference = endTime - startTime;
+            roundTime = (int)difference.TotalSeconds;
             paused = true;
             pauseBuffered = true;
             Time.timeScale = 0f;
             StartCoroutine(ResetPauseBuffered());
+            pauseTimeGameObject = GameObject.FindGameObjectsWithTag("PauseTime")[0];
+            pauseTimeGameObject.GetComponent<TMP_Text>().text = "Time: "+roundTime+" seconds";
             GameObject.FindGameObjectWithTag("PauseMenu").transform.Find("Canvas").GetComponent<Canvas>().enabled = true;
+
         }
 
         public void UnloadPauseMenu() {

@@ -15,6 +15,7 @@ TagManager:
   - PauseMenu
   - ResumeButton
   - RestartButton
+  - PauseTime
   layers:
   - Default
   - TransparentFX
