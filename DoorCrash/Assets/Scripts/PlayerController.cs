@@ -37,6 +37,16 @@ public class PlayerController : MonoBehaviour
 
         // Move the character forward or backward
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+        // Check if the car's Y position is below -15
+        if (transform.position.y < -15f)
+        {
+            // Respawn the car at (0, 0, 0)
+            transform.position = new Vector3(0f, 0f, 0f);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.rotation = Quaternion.identity;
+        }
     }
 
     void FixedUpdate()

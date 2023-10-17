@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour {
         private bool winCondition = false;
         public int pickupNumber = 10;
 
+        public string lastScene;
+
        void Start () {
             
             if (SceneManager.GetActiveScene().name == "LevelOne"){

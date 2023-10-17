@@ -18,6 +18,7 @@ public class LightAnimationScript : MonoBehaviour
             {
                 animationComplete = true;
                 SceneManager.LoadScene("YouLose");
+                SceneManag
             }
         }
     }
