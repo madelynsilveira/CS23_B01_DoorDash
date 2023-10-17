@@ -70,6 +70,14 @@ public class GameController : MonoBehaviour {
             SceneManager.LoadScene("YouWin");
         }
 
+        public void LoadPauseMenu() {
+            SceneManager.LoadScene("PauseMenuScene", LoadSceneMode.Additive);
+        }
+
+        public void UnloadPauseMenu() {
+            SceneManager.UnloadSceneAsync("PauseMenuScene");
+        }
+
         public void QuitGame(){
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -200,6 +208,10 @@ public class GameController : MonoBehaviour {
         
         public void loadCurrLevel() {
             SceneManager.LoadScene(currScene);
+        }
+
+        public void loadLevel1() {
+            SceneManager.LoadScene("LevelOne");
         }
 
         public void RemoveDelivery () {
