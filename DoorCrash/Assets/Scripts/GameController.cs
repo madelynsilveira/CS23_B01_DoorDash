@@ -58,14 +58,17 @@ public class GameController : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("RestartButton").GetComponent<Button>().onClick.AddListener(loadCurrLevel);
             }
             if(SceneManager.GetActiveScene().name == "LevelZero"){
+                pickupNumber = 1;
                 nextScene = "LevelOne";
                 currScene = "LevelZero";
             }
             if(SceneManager.GetActiveScene().name == "LevelOne"){
+                pickupNumber = 10;
                 nextScene = "LevelTwo";
                 currScene = "LevelOne";
             }
             if(SceneManager.GetActiveScene().name == "LevelTwo"){
+                pickupNumber = 4;
                 nextScene = "GameEnd"; // LevelThree
                 currScene = "LevelTwo";
             }
@@ -212,16 +215,18 @@ public class GameController : MonoBehaviour {
                 nextScene = "LevelOne";
             }
             if(SceneManager.GetActiveScene().name == "LevelOne"){
+                pickupNumber = 10;
                 nextScene = "LevelTwo";
             }
             if(SceneManager.GetActiveScene().name == "LevelTwo"){
-                nextScene = "LevelTwo";
+                nextScene = "GameEnd";
             }
             Debug.Log("Next scene is "+nextScene);    
             if (scene.name == "YouWin")
             {
                 Button nextButton = GameObject.FindGameObjectsWithTag("NextButton")[0].GetComponent<Button>();
                 if(nextScene == "LevelOne" || nextScene == "LevelTwo") {
+                    Debug.Log("We're here for some reason.");
                     // Access the Text component of the Button and set its text
                     Text buttonText = nextButton.GetComponentInChildren<Text>();
                     if (buttonText != null)
@@ -235,12 +240,12 @@ public class GameController : MonoBehaviour {
                     }
                 }
                 if(nextScene == "GameEnd"){
+                    Debug.Log("That's all folks");
                     // Access the Text component of the Button and set its text
                     Text buttonText = nextButton.GetComponentInChildren<Text>();
                     if (buttonText != null)
                     {
-                        buttonText.text = "That's it!";
-                        nextButton.onClick.AddListener(loadNextLevel);
+                        buttonText.text = "GGs!";
                     }
                     else
                     {
