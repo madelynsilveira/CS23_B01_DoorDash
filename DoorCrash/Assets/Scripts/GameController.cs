@@ -22,9 +22,16 @@ public class GameController : MonoBehaviour {
 
         public string nextScene;
         public string currScene;
+        public bool paused;
+
+        private bool pauseBuffered = false;
 
        void Start () {
+            paused = false;
             Debug.Log("Running start.");
+
+            
+
             
             if (SceneManager.GetActiveScene().name == "LevelOne" || 
                 SceneManager.GetActiveScene().name == "LevelZero"||
@@ -40,6 +47,13 @@ public class GameController : MonoBehaviour {
                 moneyGameObject = GameObject.FindGameObjectsWithTag("MoneyText")[0];
 
                 SceneManager.sceneLoaded += OnSceneLoaded;
+
+                // set the pause object inactive
+                GameObject.FindGameObjectWithTag("PauseMenu").transform.Find("Canvas").GetComponent<Canvas>().enabled = false;
+
+                // set up the pause menu buttons
+                GameObject.FindGameObjectWithTag("ResumeButton").GetComponent<Button>().onClick.AddListener(UnloadPauseMenu);
+                GameObject.FindGameObjectWithTag("RestartButton").GetComponent<Button>().onClick.AddListener(loadCurrLevel);
             }
             if(SceneManager.GetActiveScene().name == "LevelZero"){
                 nextScene = "LevelOne";
@@ -60,10 +74,19 @@ public class GameController : MonoBehaviour {
             if (Input.GetKey("escape")){
                 Application.Quit();
             }
-            if (Input.GetKey("p") || Input.GetKey("space")) {
-                Debug.Log("paused");
-                LoadPauseMenu();
+            if ((Input.GetKey("p") || Input.GetKey("space")) && (!paused && !pauseBuffered)) {
+                if(paused){
+                    Debug.Log("unpaused");
+                    UnloadPauseMenu();
+                }
+                else{
+                    Debug.Log("paused");
+                    LoadPauseMenu();
+                }
             }
+            // else if (pauseBuffered) {
+            //     Debug.Log("Can't, pause buffered.");
+            // }
         }
 
         public void EndSceneYouLose(){
@@ -75,12 +98,17 @@ public class GameController : MonoBehaviour {
         }
 
         public void LoadPauseMenu() {
-            SceneManager.LoadScene("PauseScreen2.0");
+            paused = true;
+            pauseBuffered = true;
+            Time.timeScale = 0f;
+            StartCoroutine(ResetPauseBuffered());
+            GameObject.FindGameObjectWithTag("PauseMenu").transform.Find("Canvas").GetComponent<Canvas>().enabled = true;
         }
 
         public void UnloadPauseMenu() {
-            Debug.Log("Unloading pause scene");
-            SceneManager.UnloadSceneAsync("PauseScreen2.0");
+            paused = false;
+            Time.timeScale = 1f;
+            GameObject.FindGameObjectWithTag("PauseMenu").transform.Find("Canvas").GetComponent<Canvas>().enabled = false;
         }
 
         public void QuitGame(){
@@ -90,6 +118,16 @@ public class GameController : MonoBehaviour {
             Application.Quit();
             #endif
         }
+
+        private IEnumerator ResetPauseBuffered()
+    {
+        // Wait for a quarter of a second
+        yield return new WaitForSeconds(0.25f);
+
+        // After waiting, set pauseBuffered to false
+        pauseBuffered = false;
+        Debug.Log("Pause got reset.");
+    }
 
         public void winCheck(){
             if (totalDeliveries == pickupNumber && deliveries == 0) {
@@ -117,6 +155,10 @@ public class GameController : MonoBehaviour {
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Time.timeScale = 1f;
+        paused = false;
+
+        
         if(SceneManager.GetActiveScene().name == "LevelZero"){
                 nextScene = "LevelOne";
                 currScene = "LevelZero";
@@ -136,6 +178,14 @@ public class GameController : MonoBehaviour {
         if (SceneManager.GetActiveScene().name == "LevelOne" || 
                 SceneManager.GetActiveScene().name == "LevelZero"||
                 SceneManager.GetActiveScene().name == "LevelTwo"){
+
+                // set the pause object inactive
+                GameObject.FindGameObjectWithTag("PauseMenu").transform.Find("Canvas").GetComponent<Canvas>().enabled = false;
+
+                // set up the pause menu buttons
+                GameObject.FindGameObjectWithTag("ResumeButton").GetComponent<Button>().onClick.AddListener(UnloadPauseMenu);
+                GameObject.FindGameObjectWithTag("RestartButton").GetComponent<Button>().onClick.AddListener(loadCurrLevel);
+                
                 // initialize delivery count
                 totalDeliveries = 0;
                 startTime = DateTime.Now;

@@ -12,6 +12,9 @@ TagManager:
   - Trampoline
   - timerText
   - NextButton
+  - PauseMenu
+  - ResumeButton
+  - RestartButton
   layers:
   - Default
   - TransparentFX
