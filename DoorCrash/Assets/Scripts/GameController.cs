@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour {
                 currScene = "LevelOne";
             }
             if(SceneManager.GetActiveScene().name == "LevelTwo"){
-                nextScene = "GameEnd";
+                nextScene = "GameEnd"; // LevelThree
                 currScene = "LevelTwo";
             }
             Debug.Log("Next scene is "+nextScene);
@@ -59,6 +59,10 @@ public class GameController : MonoBehaviour {
         void Update(){       
             if (Input.GetKey("escape")){
                 Application.Quit();
+            }
+            if (Input.GetKey("p") || Input.GetKey("space")) {
+                Debug.Log("paused");
+                LoadPauseMenu();
             }
         }
 
@@ -71,11 +75,12 @@ public class GameController : MonoBehaviour {
         }
 
         public void LoadPauseMenu() {
-            SceneManager.LoadScene("PauseMenuScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("PauseScreen2.0");
         }
 
         public void UnloadPauseMenu() {
-            SceneManager.UnloadSceneAsync("PauseMenuScene");
+            Debug.Log("Unloading pause scene");
+            SceneManager.UnloadSceneAsync("PauseScreen2.0");
         }
 
         public void QuitGame(){
@@ -211,6 +216,7 @@ public class GameController : MonoBehaviour {
         }
 
         public void loadLevel1() {
+            Debug.Log("This is my level");
             SceneManager.LoadScene("LevelOne");
         }
 
