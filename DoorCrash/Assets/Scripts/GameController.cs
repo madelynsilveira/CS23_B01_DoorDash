@@ -77,9 +77,9 @@ public class GameController : MonoBehaviour {
         }
 
         void Update(){       
-            if (Input.GetKey("escape")){
-                Application.Quit();
-            }
+            // if (Input.GetKey("escape")){
+            //     Application.Quit();
+            // }
             if ((Input.GetKey("p") || Input.GetKey("space")) && (!paused && !pauseBuffered)) {
                 if(paused){
                     Debug.Log("unpaused");
@@ -124,7 +124,8 @@ public class GameController : MonoBehaviour {
         }
 
         public void QuitGame(){
-            Application.Quit();
+            SceneManager.LoadScene("StartScreen");
+            // Application.Quit();
         }
 
         private IEnumerator ResetPauseBuffered()
